@@ -66,7 +66,7 @@
 
             if (name && phone) {
                 // Format the transaction note with the user's name and phone number
-                const transactionNote = `Payment for ${name} - ${phone}`;
+                const transactionNote = `Lucky Draw ${name} - ${phone}`;
                 
                 // UPI link for PhonePe payment (using dynamic name and phone)
                 const upiLink = `upi://pay?pa=9866374621@ybl&pn=PhonePe&mc=0000&tid=1234567890&tr=1234567890&tn=${encodeURIComponent(transactionNote)}&am=100&cu=INR`;
