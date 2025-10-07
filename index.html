@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Details and Make Payment</h2>
+        <form id="contactForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <!-- This is the payment button -->
+            <button id="paymentButton" type="button">Pay ₹100 via PhonePe</button>
+        </form>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        const paymentButton = document.getElementById('paymentButton');
+        const status = document.getElementById('status');
+        
+        paymentButton.addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            if (name && phone) {
+                // Payment link for PhonePe (adjust the UPI ID and amount as needed)
+                const upiLink = `upi://pay?pa=9866374621@ybl&pn=PhonePe&mc=0000&tid=1234567890&tr=1234567890&tn=Payment+for+service&am=100&cu=INR`;
+                
+                // Redirect the user to the PhonePe payment app
+                window.location.href = upiLink;
+
+                status.textContent = "Redirecting to PhonePe for payment...";
+                status.style.color = "green";
+            } else {
+                status.textContent = "Please enter both your name and phone number.";
+                status.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
